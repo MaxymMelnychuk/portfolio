@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Rubik  } from "next/font/google";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-montserrat",
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-rubik",
 });
 
 export const metadata: Metadata = {
@@ -21,13 +28,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased max-w-7xl mx-auto relative`}
+        className={`${montserrat.variable} ${rubik.variable} antialiased max-w-6xl mx-auto relative`}
       >
-        <header className="bg-neutral-800 fixed p-4 rounded-md mt-4 w-full max-w-7xl flex items-center justify-between">
-          <p>MM</p>
-          <p>Linkedin</p>
-        </header>
-
+      <header className="bg-neutral-900 font-light text-sm  shadow-neutral-700 border border-neutral-700 text-neutral-300 font-rubik shadow-[0_0_10px_black] fixed p-3 rounded-md mt-4 w-full max-w-6xl flex items-center">
+        <div className="flex-1">
+          <a href="" className="inline-block px-1 text-xl font-medium italic bg-linear-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent">MM</a>
+        </div>
+        <nav className="flex-1 flex justify-center ">
+          <ul className="flex gap-6">
+            <li className="hover:text-white text-white"><a href="">[ Home ]</a></li>
+            <li className="hover:text-white"><a href="">Projects</a></li>
+            <li className="hover:text-white"><a href="">Contact</a></li>
+          </ul>
+        </nav>
+        <div className="flex-1 flex justify-end">
+          <ul className="flex gap-4">
+            <li className="hover:text-white flex whitespace-nowrap"><a href="https://www.linkedin.com/in/maxym-melnychuk-92891232b/">Linkedin</a><ArrowUpRightIcon className="ml-1 w-3 h-3 "/></li>
+            <li className="hover:text-white flex whitespace-nowrap"><a href="https://github.com/MaxymMelnychuk">Github</a><ArrowUpRightIcon className="ml-1 w-3 h-3 "/></li>
+            <li className="hover:text-white flex whitespace-nowrap"><a href="mailto:maxym.melnychuk.pro@gmail.com">Email</a><ArrowUpRightIcon className="ml-1 w-3 h-3 "/></li>
+            <li className="hover:text-white flex whitespace-nowrap"><a href="">CV</a><ArrowUpRightIcon className="ml-1 w-3 h-3 "/></li>
+          </ul>
+        </div>
+      </header>
         {children}
       </body>
     </html>
