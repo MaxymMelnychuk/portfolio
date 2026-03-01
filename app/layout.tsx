@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Rubik } from "next/font/google";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import "./globals.css";
+import Header from "@/components/layout/Header";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,52 +30,12 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${rubik.variable} antialiased mx-auto relative`}
       >
-        <header className="fixed top-3 left-1/2 z-50 w-[calc(100vw-2rem)] max-w-6xl -translate-x-1/2 rounded-md border border-neutral-800 bg-[#111111] p-3 text-sm font-light text-neutral-300 shadow-[0_0_10px_rgba(0,0,0,0.6)] backdrop-blur font-rubik flex items-center">
-          <div className="flex-1">
-            <a
-              href=""
-              className="inline-block px-1 text-xl font-medium italic bg-linear-to-t from-neutral-500 to-neutral-300 bg-clip-text text-transparent"
-            >
-              MM
-            </a>
-          </div>
-          <nav className="flex-1 flex justify-center ">
-            <ul className="flex gap-6">
-              <li className="hover:text-white text-white">
-                <a href="">[ Home ]</a>
-              </li>
-              <li className="hover:text-white">
-                <a href="">Projects</a>
-              </li>
-              <li className="hover:text-white">
-                <a href="">Contact</a>
-              </li>
-            </ul>
-          </nav>
-          <div className="flex-1 flex justify-end">
-            <ul className="flex gap-4">
-              <li className="hover:text-white flex whitespace-nowrap">
-                <a href="https://www.linkedin.com/in/maxym-melnychuk-92891232b/">
-                  Linkedin
-                </a>
-                <ArrowUpRightIcon className="ml-1 w-3 h-3 " />
-              </li>
-              <li className="hover:text-white flex whitespace-nowrap">
-                <a href="https://github.com/MaxymMelnychuk">Github</a>
-                <ArrowUpRightIcon className="ml-1 w-3 h-3 " />
-              </li>
-              <li className="hover:text-white flex whitespace-nowrap">
-                <a href="mailto:maxym.melnychuk.pro@gmail.com">Email</a>
-                <ArrowUpRightIcon className="ml-1 w-3 h-3 " />
-              </li>
-              <li className="hover:text-white flex whitespace-nowrap">
-                <a href="">CV</a>
-                <ArrowUpRightIcon className="ml-1 w-3 h-3 " />
-              </li>
-            </ul>
-          </div>
-        </header>
+        <Header />
         {children}
+        <footer className="py-6 text-xs font-light flex justify-center gap-1 text-neutral-300 border-t border-neutral-800">
+          <p>Maxym Melnychuk -</p>
+          <p>© {new Date().getFullYear()} All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
