@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Card from "@/components/ui/Card";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import TextReveal from "@/components/TextReveal"
 
 export default function Home() {
   return (
@@ -25,10 +26,7 @@ export default function Home() {
             <div className=" border border-neutral-600 rounded-sm bg-linear-to-b from-neutral-800 to-neutral-950 text-sm px-4 py-2">
               <p>Hi, i&apos;m Maxym Melnychuk 👋</p>
             </div>
-            <h1 className=" text-5xl font-medium tracking-wide text-center  text-black dark:text-zinc-50">
-              A developer who enjoys solving hard problems and building lasting
-              systems.
-            </h1>
+            <TextReveal text="A developer who enjoys solving hard problems and building lasting systems." className="text-5xl font-medium tracking-wide text-center  text-black dark:text-zinc-50" />
             <p className="max-w-3xl text-sm text-center  text-zinc-600 dark:text-zinc-400">
               Driven by innovation, exploring the potential of AI, and turning
               ideas into scalable, high-impact products. I’m constantly
@@ -99,7 +97,7 @@ export default function Home() {
           </div>
         </section>
         <section className="py-32 px-6 sm:px-10 lg:px-0 max-w-5xl mx-auto">
-          <div className="max-w-6xl mx-auto flex flex-col gap-12 md:flex-row md:items-start">
+          <div className="max-w-6xl mx-auto flex flex-col gap-2 md:flex-row md:items-start">
             <div className="md:w-1/3 flex flex-col gap-3">
               <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
                 Skills
