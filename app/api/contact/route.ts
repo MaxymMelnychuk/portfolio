@@ -19,7 +19,10 @@ export async function POST(request: Request) {
   try {
     body = (await request.json()) as ContactPayload;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid request body." },
+      { status: 400 },
+    );
   }
 
   const name = body.name?.trim();
@@ -35,13 +38,16 @@ export async function POST(request: Request) {
   }
 
   if (!message || message.length < 20 || message.length > 2000) {
-    return NextResponse.json({ error: "Message must be between 20 and 2000 characters." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Message must be between 20 and 2000 characters." },
+      { status: 400 },
+    );
   }
 
   try {
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: "maxymmelnychuk100@gmail.com",
+      to: "maxym.melnychuk.pro@gmail.com",
       subject: `New message from ${name}`,
       html: `<p><strong>Name:</strong> ${name}</p>
 <p><strong>Email:</strong> ${email}</p>
@@ -51,7 +57,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true });
   } catch {
-    return NextResponse.json({ error: "Failed to send message." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to send message." },
+      { status: 500 },
+    );
   }
 }
-
