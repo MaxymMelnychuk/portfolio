@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Card from "@/components/ui/Card";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-import TextReveal from "@/components/TextReveal"
+import TextReveal from "@/components/TextReveal";
 
 export default function Home() {
   return (
@@ -26,7 +26,10 @@ export default function Home() {
             <div className=" border border-neutral-600 rounded-sm bg-linear-to-b from-neutral-800 to-neutral-950 text-sm px-4 py-2">
               <p>Hi, i&apos;m Maxym Melnychuk 👋</p>
             </div>
-            <TextReveal text="A developer who enjoys solving hard problems and building lasting systems." className="text-5xl font-medium tracking-wide text-center  text-black dark:text-zinc-50" />
+            <TextReveal
+              text="A developer who enjoys solving hard problems and building lasting systems."
+              className="text-5xl font-medium tracking-wide text-center  text-black dark:text-zinc-50"
+            />
             <p className="max-w-3xl text-sm text-center  text-zinc-600 dark:text-zinc-400">
               Driven by innovation, exploring the potential of AI, and turning
               ideas into scalable, high-impact products. I’m constantly
@@ -40,9 +43,18 @@ export default function Home() {
             </p>
 
             <div className="flex gap-6 w-full">
-              <Card title="Moi Mon Cerveau" image="/project-moi-mon-cerveau.png" />
-              <Card title="Parc Activities" image="/project-parc-activities.png" />
-              <Card title="Currency Converter" image="/project-currency-converter.png" />
+              <Card
+                title="Moi Mon Cerveau"
+                image="/project-moi-mon-cerveau.png"
+              />
+              <Card
+                title="Parc Activities"
+                image="/project-parc-activities.png"
+              />
+              <Card
+                title="Currency Converter"
+                image="/project-currency-converter.png"
+              />
             </div>
           </div>
         </section>

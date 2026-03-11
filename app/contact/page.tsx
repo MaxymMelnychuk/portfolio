@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import TextReveal from "@/components/TextReveal";
 
 type FormState = {
   name: string;
@@ -100,9 +101,10 @@ export default function ContactPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
               Contact
             </p>
-            <h1 className="text-4xl md:text-5xl font-medium text-zinc-50">
-              Let&apos;s talk about interfaces, systems, or a project idea.
-            </h1>
+            <TextReveal
+              text="Let's talk about interfaces, systems, or a project idea."
+              className="text-4xl md:text-5xl font-medium text-zinc-50"
+            />
             <p className="text-sm text-neutral-400 max-w-md">
               I like working close to design and product, owning the frontend
               and making sure the details feel considered. If you have a
@@ -172,7 +174,10 @@ export default function ContactPage() {
                   minLength={20}
                   value={form.message}
                   onChange={(event) =>
-                    setForm((prev) => ({ ...prev, message: event.target.value }))
+                    setForm((prev) => ({
+                      ...prev,
+                      message: event.target.value,
+                    }))
                   }
                   className="min-h-[140px] rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-sm text-neutral-100 outline-none focus:border-neutral-500 resize-none"
                   required
@@ -197,7 +202,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={submitState.status === "submitting"}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-neutral-700/80 bg-neutral-900/80 px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] text-neutral-100 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full border border-neutral-700/80 bg-neutral-900/80 px-6 py-2.5 text-[11px] uppercase tracking-[0.2em] text-neutral-100 disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
                 >
                   {submitState.status === "submitting"
                     ? "Sending..."
@@ -212,4 +217,3 @@ export default function ContactPage() {
     </main>
   );
 }
-

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import TextReveal from "@/components/TextReveal";
 
 const projects = [
   {
@@ -63,9 +64,10 @@ export default function ProjectsPage() {
             <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
               Projects
             </p>
-            <h1 className="text-4xl md:text-5xl font-medium text-zinc-50">
-              Interfaces, experiments, and tools I&apos;ve been shipping.
-            </h1>
+            <TextReveal
+              text="Interfaces, experiments, and tools I've been shipping."
+              className="text-4xl md:text-5xl font-medium text-zinc-50"
+            />
             <p className="text-sm text-neutral-400 max-w-xl">
               A selection of work that mixes minimal layouts, clear hierarchy,
               and product-focused thinking.
