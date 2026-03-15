@@ -9,7 +9,7 @@ type Props = {
 
 export default function TextReveal({ text, className }: Props) {
   const words =
-    text.match(/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*(?:[.,!?;]+)?/gu) || [];
+    text.match(/[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*(?:[.,!?;]+)?\s*/gu) || [];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -27,14 +27,14 @@ export default function TextReveal({ text, className }: Props) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      style={{ display: "inline-block" }}
+      style={{ display: "inline-block", whiteSpace: "pre-wrap" }}
     >
       {words.map((word, i) => (
         <motion.span
           key={i}
           variants={childVariants}
           transition={{ duration: 0.6 }}
-          style={{ marginRight: "12px", display: "inline-block" }}
+          style={{ display: "inline-block" }}
         >
           {word}
         </motion.span>
