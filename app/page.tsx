@@ -1,329 +1,315 @@
-import Image from "next/image";
+"use client";
+
+import { useRef } from "react";
+import dynamic from "next/dynamic";
 import Card from "@/components/ui/Card";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-import TextReveal from "@/components/TextReveal";
+import TextReveal from "@/components/animations/TextReveal";
+import ProjectsCTA from "@/components/ui/ProjectsCTA";
+import SectionLabel from "@/components/ui/SectionLabel";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ExperienceTimeline from "@/components/home/ExperienceTimeline";
+import { featuredProjects } from "@/data/projects";
+import { SCROLL_ANIM } from "@/lib/animation";
+import { useScrollAnimations } from "@/hooks/useScrollAnimations";
+import { motion } from "framer-motion";
+
+const LightRays = dynamic(() => import("@/components/animations/LightRays"), {
+  ssr: false,
+});
+const Particles = dynamic(() => import("@/components/animations/Particles"), {
+  ssr: false,
+});
+const MagicBento = dynamic(() => import("@/components/animations/MagicBento"), {
+  ssr: false,
+});
+
+const { type: ANIM, duration: DURATION, stagger: STAGGER } = SCROLL_ANIM;
 
 export default function Home() {
-  return (
-    <div className="relative min-h-screen font-montserrat bg-neutral-950">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-screen w-full overflow-hidden">
-        <Image
-          src="/hero-arc.png"
-          alt="Decor Hero"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-45 pointer-events-none  select-none"
-        />
-      </div>
+  const mainRef = useRef<HTMLElement>(null);
+  useScrollAnimations(mainRef);
 
-      <main className="max-w-6xl mx-auto">
+  return (
+    <div className="relative min-h-screen font-montserrat">
+      <main ref={mainRef} className="mx-auto flex flex-col items-center">
+        <section
+          id="hero"
+          aria-label="Introduction"
+          className="relative mx-auto h-screen w-full flex flex-col items-center justify-center bg-[url('/hero-grid.png')] bg-no-repeat bg-size-[1200px] xl:bg-contain bg-top"
+        >
+          <div
+            className="absolute h-full w-full inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
+            <LightRays />
+          </div>
+
+          <div
+            className="absolute w-full inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
+            <Particles />
+          </div>
+
+          <div className="flex z-4 flex-col items-center justify-center gap-6 sm:gap-8 text-center relative w-full max-w-5xl mx-auto px-5 sm:px-8">
+            <div
+              data-animate={ANIM}
+              data-animate-immediate
+              data-animate-delay="0.1"
+              data-animate-duration={DURATION}
+              className="p-px rounded-sm bg-linear-to-b from-neutral-400 to-neutral-600"
+            >
+              <div className="text-white rounded-sm bg-linear-to-b from-neutral-800 to-neutral-950 text-xs sm:text-sm px-4 py-2">
+                <p>Hi, i&apos;m Maxym Melnychuk 👋</p>
+              </div>
+            </div>
+
+            <TextReveal
+              text="A developer who enjoys building scalable systems for real use."
+              className="w-full text-[1.6rem] leading-tight sm:text-4xl sm:leading-tight sm:max-w-3xl lg:text-6xl lg:max-w-5xl lg:leading-[1.1] font-medium font-inter tracking-tight text-center text-white"
+            />
+
+            <p
+              data-animate={ANIM}
+              data-animate-immediate
+              data-animate-delay="0.35"
+              data-animate-duration={DURATION}
+              className="w-full max-w-md sm:max-w-2xl lg:max-w-3xl leading-relaxed text-sm sm:text-base text-center text-zinc-400"
+            >
+              Driven by innovation and AI, I build scalable, high-impact
+              products. I&apos;m constantly learning and experimenting to create
+              solutions that solve real problems and deliver long-term value.
+            </p>
+          </div>
+
+          <div
+            data-animate={ANIM}
+            data-animate-immediate
+            data-animate-delay="0.55"
+            data-animate-duration={DURATION}
+            className="mt-10"
+            aria-hidden="true"
+          >
+            <motion.div
+              animate={{
+                y: [0, 18, 0],
+                opacity: [0.6, 1, 0.6],
+                filter: [
+                  "drop-shadow(0 0 0px rgba(255,255,255,0))",
+                  "drop-shadow(0 0 10px rgba(255,255,255,0.55))",
+                  "drop-shadow(0 0 0px rgba(255,255,255,0))",
+                ],
+              }}
+              transition={{
+                duration: 2.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 3V17"
+                  stroke="#bbbbbb"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M7 12L12 17L17 12"
+                  stroke="#bbbbbb"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </motion.div>
+          </div>
+
+          <span
+            className="z-3 absolute bottom-0 w-full h-50 bg-linear-to-t from-neutral-950 to-transparent"
+            aria-hidden="true"
+          />
+        </section>
+
         <section
           id="projects"
-          className="relative mx-auto h-full w-full flex flex-col items-center justify-center bg-[url('/hero-grid.png')] bg-no-repeat bg-size-[1200px] xl:bg-contain bg-top "
+          aria-labelledby="latest-projects-heading"
+          className="max-w-7xl w-full flex flex-col justify-end px-4 sm:px-6 py-20"
         >
-          <div className="flex flex-col items-center gap-8 text-center  sm:text-left pt-52 relative ">
-            <div className=" border border-neutral-600 rounded-sm bg-linear-to-b from-neutral-800 to-neutral-950 text-sm px-4 py-2">
-              <p>Hi, i&apos;m Maxym Melnychuk 👋</p>
-            </div>
-            <TextReveal
-              text="A developer who enjoys solving hard problems and building lasting systems."
-              className="text-5xl font-medium tracking-wide text-center  text-black dark:text-zinc-50"
-            />
-            <p className="max-w-3xl text-sm text-center  text-zinc-600 dark:text-zinc-400">
-              Driven by innovation, exploring the potential of AI, and turning
-              ideas into scalable, high-impact products. I’m constantly
-              learning, experimenting, and challenging myself to build solutions
-              that solve real problems and create long-term value.
-            </p>
-          </div>
-          <div className="my-38 w-full">
-            <p className="text-xl text-neutral-400 italic text-right mb-4">
-              Latest projects
-            </p>
+          <SectionHeading
+            id="latest-projects-heading"
+            align="right"
+            data-animate={ANIM}
+            data-animate-duration={DURATION}
+            data-animate-start="top 90%"
+            className="text-2xl sm:text-3xl mb-10 sm:mb-12"
+          >
+            Latest projects
+          </SectionHeading>
 
-            <div className="flex gap-6 w-full">
-              <Card
-                title="Moi Mon Cerveau"
-                image="/project-moi-mon-cerveau.png"
-              />
-              <Card
-                title="Parc Activities"
-                image="/project-parc-activities.png"
-              />
-              <Card
-                title="Currency Converter"
-                image="/project-currency-converter.png"
-              />
-            </div>
+          <div
+            data-animate-stagger={ANIM}
+            data-animate-stagger-delay={STAGGER}
+            data-animate-duration={DURATION}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full items-end"
+          >
+            {featuredProjects.map((project, index) => (
+              <div key={project.id} data-animate-child>
+                <Card
+                  title={project.title}
+                  image={project.image}
+                  githubUrl={project.githubUrl}
+                  priority={index === 0}
+                />
+              </div>
+            ))}
           </div>
         </section>
-        <section className="py-40 px-6 sm:px-0 ">
+
+        <section
+          aria-labelledby="about-heading"
+          className="py-32 sm:py-40 px-6 sm:px-0"
+        >
           <div className="max-w-5xl mx-auto">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-neutral-500 mb-8">
-              <span>About</span>
-            </div>
-            <div className="h-px w-full bg-linear-to-r from-neutral-900 via-neutral-700/70 to-neutral-900 mb-10" />
+            <SectionLabel
+              data-animate={ANIM}
+              data-animate-duration={DURATION}
+              className="mb-8"
+            >
+              About
+            </SectionLabel>
+
+            <div
+              data-animate-line="h"
+              data-animate-duration={SCROLL_ANIM.lineDuration}
+              className="h-px w-full bg-linear-to-r from-neutral-900 via-neutral-700/70 to-neutral-900 mb-10"
+              aria-hidden="true"
+            />
+
             <div className="grid gap-12 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1.1fr)]">
               <div className="space-y-4">
-                <h2 className="text-3xl md:text-4xl font-medium text-zinc-50">
+                <SectionHeading
+                  id="about-heading"
+                  data-animate={ANIM}
+                  data-animate-duration={DURATION}
+                  className="text-3xl md:text-4xl"
+                >
                   A developer who cares about clarity, pace, and long-term
                   quality.
-                </h2>
-                <p className="text-sm text-zinc-400 leading-relaxed">
-                  I&apos;m a second-year student at IIM Digital School in Paris,
-                  focused on web development and digital products. I like
-                  projects that force me to think about structure, not just
-                  pixels — how components scale, how data flows, and how the
-                  experience feels end-to-end.
-                </p>
-                <p className="text-sm text-zinc-400 leading-relaxed">
-                  Most of my time goes into building clean, maintainable
-                  frontends, iterating quickly, and learning from each project
-                  so the next one is sharper, faster, and more considered.
-                </p>
-              </div>
-              <div className="space-y-8 text-sm text-zinc-400">
-                <div className="space-y-2">
-                  <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                    Now
+                </SectionHeading>
+
+                <div
+                  data-animate-stagger={ANIM}
+                  data-animate-stagger-delay={STAGGER}
+                  data-animate-duration={DURATION}
+                  className="space-y-4"
+                >
+                  <p
+                    data-animate-child
+                    className="text-sm text-zinc-400 leading-relaxed"
+                  >
+                    I&apos;m a third-year student at IIM Digital School in
+                    Paris, focused on web development and digital products. I
+                    like projects that force me to think about structure, not
+                    just pixels — how components scale, how data flows, and how
+                    the experience feels end-to-end.
                   </p>
+                  <p
+                    data-animate-child
+                    className="text-sm text-zinc-400 leading-relaxed"
+                  >
+                    Most of my time goes into building clean, maintainable
+                    frontends, iterating quickly, and learning from each project
+                    so the next one is sharper, faster, and more considered.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                data-animate-stagger={ANIM}
+                data-animate-stagger-delay={STAGGER}
+                data-animate-duration={DURATION}
+                className="space-y-8 text-sm text-zinc-400"
+              >
+                <div data-animate-child className="space-y-2">
+                  <SectionLabel>Now</SectionLabel>
                   <p>
                     Exploring how AI, design systems, and good architecture can
                     work together to ship interfaces that feel simple on the
                     surface but are solid underneath.
                   </p>
                 </div>
-                <div className="space-y-2">
-                  <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                    Outside of code
-                  </p>
+                <div data-animate-child className="space-y-2">
+                  <SectionLabel>Outside of code</SectionLabel>
                   <p>
-                    I recharge with video games, cars, and Japanese culture —
-                    things that also influence how I think about motion, pacing,
-                    and detail in the products I build.
+                    Music plays an important role in my daily life and often
+                    accompanies me while I’m developing. I enjoy movies for
+                    their storytelling and video games for their immersive and
+                    interactive worlds. In my free time, I like to relax and
+                    discover new things.
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="py-32 px-6 sm:px-10 lg:px-0 max-w-5xl mx-auto">
-          <div className="max-w-6xl mx-auto flex flex-col gap-2 md:flex-row md:items-start">
-            <div className="md:w-1/3 flex flex-col gap-3">
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-                Skills
-              </p>
-              <h2 className="text-3xl md:text-4xl font-medium text-zinc-50">
-                Clean and maintainable code built for scalability
-              </h2>
-              <p className="text-sm text-zinc-400">
-                Focused on creating reliable, maintainable, and thoughtful
-                solutions with clarity and purpose in every layer, carefully
-                balancing scalability, performance, and long-term impact to
-                ensure that each system, component, and interaction works
-                seamlessly together.
-              </p>
-            </div>
-            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-neutral-800 pt-8 ">
-              <div className="flex flex-col gap-3">
-                <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                  Frameworks
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    React
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Next.js
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Vue.js
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Symfony
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                  Languages
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    TypeScript
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    JavaScript
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    HTML &amp; CSS
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Python
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    PHP
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Node.js
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    SQL
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                  Libraries
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Tailwind CSS
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    GSAP
-                  </span>
-                </div>
-              </div>
-              <div className="flex flex-col gap-3">
-                <p className="text-xs uppercase tracking-[0.18em] text-neutral-500">
-                  Tools
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Git &amp; GitHub
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    Figma (handoff)
-                  </span>
-                  <span className="rounded-full border border-neutral-700/70 px-3 py-1 text-neutral-200 bg-neutral-900/40">
-                    VS Code
-                  </span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="py-32 px-6 sm:px-10 lg:px-0">
-          <div className="max-w-5xl mx-auto">
-            <div className="flex items-baseline justify-between gap-6 mb-10">
-              <div className="space-y-2">
-                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-                  Experience
-                </p>
-                <h2 className="text-3xl md:text-4xl font-medium text-zinc-50">
-                  A concise timeline of what I&apos;ve been building.
-                </h2>
-              </div>
+        <section
+          aria-labelledby="skills-heading"
+          className="py-32 px-6 sm:px-10 lg:px-0 max-w-6xl mx-auto w-full"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            <div className="md:w-2/5 flex flex-col gap-3">
+              <SectionLabel
+                data-animate={ANIM}
+                data-animate-duration={DURATION}
+              >
+                Skills
+              </SectionLabel>
+              <SectionHeading
+                id="skills-heading"
+                data-animate={ANIM}
+                data-animate-delay="0.08"
+                data-animate-duration={DURATION}
+                className="text-3xl md:text-4xl"
+              >
+                Clean and maintainable code built for scalability
+              </SectionHeading>
             </div>
-            <div className="relative pl-5">
-              <div className="absolute left-0 top-1 bottom-1 w-px bg-neutral-800/80" />
-              <div className="flex flex-col gap-8">
-                <div className="relative pl-6">
-                  <div className="absolute left-[-11px] top-1 h-2.5 w-2.5 rounded-full border border-neutral-500 bg-neutral-900" />
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="text-sm text-neutral-200">
-                        <span className="font-medium">
-                          Full-Stack Developer
-                        </span>
-                        <span className="text-neutral-500">
-                          {" "}
-                          · Client-Sponsored Project — Groupe Lemoine
-                        </span>
-                      </p>
-                      <p className="text-xs text-neutral-500">
-                        Jan 2026 — Present
-                      </p>
-                    </div>
-                    <p className="text-xs text-neutral-400 max-w-[80%]">
-                      - Redesigned the website, improving load speed,
-                      responsiveness, and overall user experience. <br />-
-                      Developed the &quot;Careers&quot; page, structured the
-                      candidate journey, integrated HR content, and enhanced
-                      usability for a seamless application process.
-                    </p>
-                  </div>
-                </div>
-                <div className="relative pl-6">
-                  <div className="absolute left-[-11px] top-1 h-2.5 w-2.5 rounded-full border border-neutral-500 bg-neutral-900" />
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="text-sm text-neutral-200">
-                        <span className="font-medium">Front-End Developer</span>
-                        <span className="text-neutral-500">
-                          {" "}
-                          · Client-Sponsored Project — Brain Research Foundation
-                          (France)
-                        </span>
-                      </p>
-                      <p className="text-xs text-neutral-500">
-                        Oct 2025 — Dec 2025
-                      </p>
-                    </div>
-                    <p className="text-xs text-neutral-400 max-w-[80%]">
-                      - Created an interactive brain map to enable clear
-                      visualization and exploration of its various regions.{" "}
-                      <br />- Implemented a memory mini-game to assess and
-                      stimulate cognitive abilities.
-                    </p>
-                  </div>
-                </div>
-                <div className="relative pl-6">
-                  <div className="absolute left-[-11px] top-1 h-2.5 w-2.5 rounded-full border border-neutral-500 bg-neutral-900" />
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="text-sm text-neutral-200">
-                        <span className="font-medium">President</span>
-                        <span className="text-neutral-500">
-                          {" "}
-                          · La 404 DeVinci
-                        </span>
-                      </p>
-                      <p className="text-xs text-neutral-500">2025 — 2026</p>
-                    </div>
-                    <p className="text-xs text-neutral-400 max-w-[80%]">
-                      - Oversaw project development and ensured timely delivery
-                      according to set deadlines. <br />- Organized various
-                      events and activities for the association.
-                    </p>
-                  </div>
-                </div>
-                <div className="relative pl-6">
-                  <div className="absolute left-[-11px] top-1 h-2.5 w-2.5 rounded-full border border-neutral-500 bg-neutral-900" />
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="text-sm text-neutral-200">
-                        <span className="font-medium">Student</span>
-                        <span className="text-neutral-500">
-                          {" "}
-                          · IIM Digital School, Paris
-                        </span>
-                      </p>
-                      <p className="text-xs text-neutral-500">2024 — 2029</p>
-                    </div>
-                    <p className="text-xs text-neutral-400 max-w-[80%]">
-                      Working on web development projects, exploring interactive
-                      design, UX optimization, and AI-assisted workflows to
-                      build scalable and innovative digital experiences.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div
+              data-animate={ANIM}
+              data-animate-delay="0.12"
+              data-animate-duration={DURATION}
+              className="md:flex-1 w-full border-t border-neutral-800 pt-8"
+            >
+              <MagicBento />
             </div>
           </div>
         </section>
-        <section className="py-46 flex justify-center items-center">
-          <a
-            href="/projects"
-            className="group inline-flex items-center gap-2 rounded-full border border-neutral-700/80 bg-neutral-900/70 px-7 py-4 text-xl uppercase tracking-[0.2em] text-neutral-100"
-          >
-            <span>View all projects</span>
-            <ArrowUpRightIcon className="w-4 h-4 text-neutral-300 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+
+        <section
+          aria-labelledby="experience-heading"
+          className="py-32 px-6 sm:px-10 lg:px-0 w-full"
+        >
+          <div className="max-w-5xl mx-auto">
+            <div
+              data-animate={ANIM}
+              data-animate-duration={DURATION}
+              className="mb-10 space-y-2"
+            >
+              <SectionLabel>Experience</SectionLabel>
+              <SectionHeading
+                id="experience-heading"
+                className="text-3xl md:text-4xl"
+              >
+                A concise timeline of what I&apos;ve been building.
+              </SectionHeading>
+            </div>
+
+            <ExperienceTimeline />
+          </div>
         </section>
+
+        <ProjectsCTA />
       </main>
     </div>
   );
