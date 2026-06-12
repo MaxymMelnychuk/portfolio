@@ -1,12 +1,24 @@
 import type { Metadata } from "next";
-import { Montserrat, Rubik } from "next/font/google";
+import { Montserrat, Rubik, Inter, Geist } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import SmoothScrollProvider from "@/components/animations/SmoothScrollProvider";
+import GradualBlur from "@/components/animations/GradualBlur";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-montserrat",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-inter",
 });
 
 const rubik = Rubik({
@@ -27,16 +39,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={cn("font-sans bg-neutral-950", geist.variable)}
+      suppressHydrationWarning
+    >
       <body
-        className={`${montserrat.variable} ${rubik.variable} antialiased mx-auto relative`}
+        className={`${montserrat.variable} ${rubik.variable} ${inter.variable} antialiased mx-auto relative bg-neutral-950`}
+        suppressHydrationWarning
       >
-        <Header />
-        {children}
-        <footer className="py-6 text-xs font-light flex justify-center gap-1 text-neutral-300 border-t border-neutral-800">
-          <p>Maxym Melnychuk -</p>
-          <p>© {new Date().getFullYear()} All rights reserved.</p>
-        </footer>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-neutral-900 focus:text-white focus:rounded-md focus:ring-2 focus:ring-neutral-500"
+        >
+          Skip to content
+        </a>
+        <SmoothScrollProvider>
+          <Header />
+          <div id="main-content">{children}</div>
+          <GradualBlur />
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );
