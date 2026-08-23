@@ -35,7 +35,7 @@ export default function Home() {
         <section
           id="hero"
           aria-label="Introduction"
-          className="relative mx-auto h-screen w-full flex flex-col items-center justify-center bg-[url('/hero-grid.png')] bg-no-repeat bg-size-[1200px] xl:bg-contain bg-top"
+          className="relative mx-auto h-screen w-full flex flex-col items-center justify-center bg-[url('/hero-grid.webp')] bg-no-repeat bg-size-[1200px] xl:bg-contain bg-top"
         >
           <div
             className="absolute h-full w-full inset-0 pointer-events-none"

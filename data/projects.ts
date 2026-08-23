@@ -14,7 +14,7 @@ export const projects: Project[] = [
     title: "Syrixa AI",
     description:
       "Your intelligent assistant for conversation, creation, and document insights.",
-    image: "/project-syrix.png",
+    image: "/project-syrixa.webp",
     stack: ["HTML/CSS", "Javascript", "Node.js", "LangChain", "RAG"],
     githubUrl: "https://github.com/MaxymMelnychuk/syrixa-ai",
     liveUrl: "#",
@@ -24,7 +24,7 @@ export const projects: Project[] = [
     title: "Daily Wallet",
     description:
       "Track your money, manage your balance, and stay in control every day.",
-    image: "/project-daily-walt.png",
+    image: "/project-daily-wallet.webp",
     stack: [
       "Next.js",
       "TypeScript",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: "Pixel Trader",
     description:
       "A trading-inspired UI exploring grids, typography, and micro-interactions in a pixel-perfect layout.",
-    image: "/project-pixel-trade.png",
+    image: "/project-pixel-trade.webp",
     stack: ["Node.js", "Express.js", "Javascript", "SCSS"],
     githubUrl: "https://github.com/MaxymMelnychuk/PixelTrader",
     liveUrl: "#",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     title: "Pokebox",
     description:
       "A playful collection UI for exploring and organizing Pokémon, mixing nostalgia with a clean grid.",
-    image: "/project-pokebo.png",
+    image: "/project-pokebox.webp",
     stack: ["HTML/CSS", "Javascript", "PHP"],
     githubUrl: "https://github.com/MaxymMelnychuk/PokeboxV2",
     liveUrl: "#",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     title: "Moi Mon Cerveau",
     description:
       "An educational interface around the human brain, designed to feel calm, clear, and intuitive.",
-    image: "/project-moi-mon-cerveau.png",
+    image: "/project-moi-mon-cerveau.webp",
     stack: ["HTML/CSS", "Javascript"],
     githubUrl: "https://github.com/MaxymMelnychuk/MoiMonCerveau",
     liveUrl: "#",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     title: "Currency Converter",
     description:
       "A minimal converter interface built to feel lightweight, responsive, and easy to read at a glance.",
-    image: "/project-currency-converte.png",
+    image: "/project-currency-converter.webp",
     stack: ["HTML/CSS", "Javascript"],
     githubUrl: "https://github.com/MaxymMelnychuk/Currency-Converter",
     liveUrl: "#",
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     title: "Parc Activities",
     description:
       "A concept for showcasing activities in a park with a focus on hierarchy, rhythm, and discoverability.",
-    image: "/project-parc-activitis.png",
+    image: "/project-parc-activities.webp",
     stack: ["HTML/CSS", "PHP"],
     githubUrl: "https://github.com/MaxymMelnychuk/AOO-project",
     liveUrl: "#",
