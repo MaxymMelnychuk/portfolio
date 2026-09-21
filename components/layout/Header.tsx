@@ -14,7 +14,6 @@ const externalLinks = [
   },
   { label: "Github", href: "https://github.com/MaxymMelnychuk" },
   { label: "Email", href: "mailto:maxym.melnychuk.pro@gmail.com" },
-  { label: "CV", href: "./resume.pdf" },
 ] as const;
 
 const menuItems = [

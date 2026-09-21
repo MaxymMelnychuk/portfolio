@@ -9,12 +9,10 @@ export const experience: ExperienceItem[] = [
   {
     role: "Full-Stack Developer",
     company: "Groupe Lemoine",
-    period: "Feb 2026 — Present",
+    period: "May 2026 — Aug 2026",
     bullets: [
-      "Led the end-to-end development of a corporate website using Next.js, React, TypeScript, Tailwind CSS, and Strapi — from UI/UX design to deployment — covering 10+ unique pages across 5 languages.",
-      "Integrated an AI-powered conversational assistant and interactive production-site maps, enhancing the platform's user experience.",
-      "Implemented a Strapi CMS for managing products and certifications, while developing recruitment features that enabled HR teams to centralize and review applications.",
-      "Applied mobile-first development, accessibility standards, and performance optimization best practices within an agile greenfield project.",
+      "Developed a complete website using Next.js, TypeScript, and Tailwind CSS, including the full UI/UX design of all pages in Figma, from initial wireframes and mockups through to final implementation. Built a dedicated careers section with advanced search and filtering capabilities, as well as multilingual support in French and English.",
+      "Implemented the back-end using Strapi (headless CMS), managed deployment, and optimized the website for performance, security, and accessibility. Set up Google Analytics and integrated a LinkedIn news feed using RSS.app.",
     ],
   },
   {
