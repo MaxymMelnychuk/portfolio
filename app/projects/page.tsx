@@ -27,7 +27,7 @@ export default function ProjectsPage() {
         aria-label="Projects"
         className="relative z-10 pt-40 pb-20 px-4 lg:px-12 xl:px-0"
       >
-        <div className="max-w-7xl mx-auto flex-col xl:flex-row xl:flex items-center gap-16">
+        <div className="max-w-7xl mx-auto flex-col xl:flex-row xl:flex items-center gap-16 md:px-8">
           <div className="space-y-3 lg:flex-1 flex-col flex mb-12 xl:mb-0 xl:sticky xl:top-32 self-start">
             <SectionLabel
               data-animate={SCROLL_ANIM.type}

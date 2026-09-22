@@ -373,7 +373,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             </div>
 
             {displaySocials && socialItems.length > 0 && (
-              <div className="sm-socials mt-auto" aria-label="Social links">
+              <div className="sm-socials" aria-label="Social links">
                 <div className="sm-socials-card">
                   <div className="sm-socials-header">
                     <span className="sm-socials-eyebrow">Socials</span>
@@ -548,7 +548,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item {
   position: relative;
   color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(2rem, 8vw, 2.85rem);
+  font-size: clamp(3.5rem, 8vw, 2.85rem);
   font-weight: 500;
   cursor: pointer;
   line-height: 1;
@@ -589,7 +589,6 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   user-select: none;
   opacity: var(--sm-num-opacity, 0);
 }
-.sm-scope .sm-socials { margin-top: auto; padding-top: 2.5rem; }
 .sm-scope .sm-socials-card {
   position: relative;
   padding: 1.2rem 1.1rem 1rem;
