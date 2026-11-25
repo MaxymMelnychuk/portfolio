@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     formats: ["image/webp"],
     minimumCacheTTL: 60,
   },
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;
