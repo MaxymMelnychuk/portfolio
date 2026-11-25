@@ -11,6 +11,16 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "01",
+    title: "AutoMeet",
+    description:
+      "Turn every meeting into structured knowledge, actionable tasks, automated follow-ups, and a clear plan for what comes next.",
+    image: "/project-automeet.webp",
+    stack: ["Next.js", "TypeScript", "TailwindCSS", "Python", "FastAPI", "Groq", "Whisper"],
+    githubUrl: "https://github.com/MaxymMelnychuk/meeting-automation",
+    liveUrl: "#",
+  },
+  {
+    id: "02",
     title: "Syrixa AI",
     description:
       "Your intelligent assistant for conversation, creation, and document insights.",
@@ -20,7 +30,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "02",
+    id: "03",
     title: "Daily Wallet",
     description:
       "Track your money, manage your balance, and stay in control every day.",
@@ -38,7 +48,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "03",
+    id: "04",
     title: "Pixel Trader",
     description:
       "A trading-inspired UI exploring grids, typography, and micro-interactions in a pixel-perfect layout.",
@@ -48,7 +58,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "04",
+    id: "05",
     title: "Pokebox",
     description:
       "A playful collection UI for exploring and organizing Pokémon, mixing nostalgia with a clean grid.",
@@ -58,7 +68,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "05",
+    id: "06",
     title: "Moi Mon Cerveau",
     description:
       "An educational interface around the human brain, designed to feel calm, clear, and intuitive.",
@@ -68,7 +78,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "06",
+    id: "07",
     title: "Currency Converter",
     description:
       "A minimal converter interface built to feel lightweight, responsive, and easy to read at a glance.",
@@ -78,7 +88,7 @@ export const projects: Project[] = [
     liveUrl: "#",
   },
   {
-    id: "07",
+    id: "08",
     title: "Parc Activities",
     description:
       "A concept for showcasing activities in a park with a focus on hierarchy, rhythm, and discoverability.",
@@ -87,20 +97,10 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MaxymMelnychuk/AOO-project",
     liveUrl: "#",
   },
-  {
-    id: "08",
-    title: "AutoMeet",
-    description:
-      "Turn every meeting into structured knowledge, actionable tasks, automated follow-ups, and a clear plan for what comes next.",
-    image: "/project-automeet.webp",
-    stack: ["Next.js", "TypeScript", "TailwindCSS", "Python", "FastAPI", "Groq", "Whisper"],
-    githubUrl: "https://github.com/MaxymMelnychuk/meeting-automation",
-    liveUrl: "#",
-  },
 ];
 
 export const featuredProjects = [
+  projects.find((p) => p.title === "AutoMeet")!,
   projects.find((p) => p.title === "Syrixa AI")!,
   projects.find((p) => p.title === "Daily Wallet")!,
-  projects.find((p) => p.title === "Pixel Trader")!,
 ];
