@@ -87,6 +87,16 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/MaxymMelnychuk/AOO-project",
     liveUrl: "#",
   },
+  {
+    id: "08",
+    title: "AutoMeet",
+    description:
+      "Turn every meeting into structured knowledge, actionable tasks, automated follow-ups, and a clear plan for what comes next.",
+    image: "/project-automeet.webp",
+    stack: ["Next.js", "TypeScript", "TailwindCSS", "Python", "FastAPI", "Groq", "Whisper"],
+    githubUrl: "https://github.com/MaxymMelnychuk/meeting-automation",
+    liveUrl: "#",
+  },
 ];
 
 export const featuredProjects = [
